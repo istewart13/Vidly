@@ -8,14 +8,14 @@ using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
-    public class CustomerController : Controller
+    public class CustomersController : Controller
     {
         [Route("Customers")]
         public ActionResult Index()
         {
             var customers = new List<Customer> {
-                new Customer { Name = "John Smith" },
-                new Customer { Name = "Mary Williams" }
+                new Customer { Name = "John Smith", Id = 1},
+                new Customer { Name = "Mary Williams", Id = 2}
             };
 
             var viewModel = new CustomerViewModel
