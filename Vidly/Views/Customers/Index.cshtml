@@ -7,15 +7,21 @@
 
 <h2>Customers</h2>
 
-<table class=“table table-bordered table-hover”>
-    <tr>
-        <th>Customer</th>
-    </tr>
-    @foreach (var customer in Model.Customers)
-    {
+@if (Model.Customers.Count == 0)
+{
+    <h3>We don't have any customers yet.</h3>
+}
+else
+{
+    <table class=“table table-bordered table-hover”>
         <tr>
-            <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id}, null)</td>
+            <th>Customer</th>
         </tr>
-
-    }
-</table>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr>
+                <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id}, null)</td>
+            </tr>
+        }
+    </table>
+}
