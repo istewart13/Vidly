@@ -29,7 +29,15 @@ namespace Vidly.Controllers
         [Route("Customers/Details/{Id}")]
         public ActionResult Details(int Id)
         {
-            return View(customers.Find( x => x.Id == Id ));
+            Customer customerFound = customers.Find(x => x.Id == Id);
+            if (customerFound != null)
+            {
+                return View(customerFound);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
     }
 }
