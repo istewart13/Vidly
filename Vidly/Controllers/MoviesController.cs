@@ -10,22 +10,27 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        private static List<Movie> movies = new List<Movie>
+        {
+            new Movie {Name = "Shrek", Id = 1},
+            new Movie {Name = "Wall-e", Id = 2}
+        };
+
+        private static List<Customer> customers = new List<Customer>
+        {
+            new Customer { Name = "John Smith", Id = 1},
+            new Customer { Name = "Mary Williams", Id = 2}
+        };
+
+        private RandomMovieViewModel viewModel = new RandomMovieViewModel
+        {
+            Movies = movies,
+            Customers = customers
+        };
+
         // GET: Movies/Random
         public ActionResult Random()
         {
-            var movie = new Movie() {Name = "Shrek!"};
-            var customers = new List<Customer>
-            {
-                new Customer {Name = "Customer1"},
-                new Customer {Name = "Customer2"}
-            };
-
-            var viewModel = new RandomMovieViewModel
-            {
-                Movie = movie,
-                Customers = customers
-            };
-
             return View(viewModel);
         }
 
@@ -35,11 +40,24 @@ namespace Vidly.Controllers
             return Content(year + "/" + month);
         }
 
-        [Route("movies")]
-
+        [Route("Movies")]
         public ActionResult Index()
         {
-            return View();
+            return View(viewModel);
+        }
+
+        [Route("Movies/Details/{Id}")]
+        public ActionResult Details(int Id)
+        {
+            Movie movieFound = viewModel.Movies.Find(x => x.Id == Id);
+            if (movieFound != null)
+            {
+                return View(movieFound);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
     }
 }
