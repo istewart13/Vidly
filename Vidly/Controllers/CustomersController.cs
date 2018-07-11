@@ -11,10 +11,6 @@ namespace Vidly.Controllers
     public class CustomersController : Controller
     {
         private ApplicationDbContext _context;
-        private List<Customer> customers = new List<Customer> {
-            new Customer { Name = "John Smith", Id = 1},
-            new Customer { Name = "Mary Williams", Id = 2}
-        };
 
         public CustomersController()
         {
@@ -29,21 +25,18 @@ namespace Vidly.Controllers
         [Route("Customers")]
         public ActionResult Index()
         {
-            var viewModel = new CustomerViewModel
-            {
-                Customers = customers
-            };
+            var customers = _context.Customers.ToList();
 
-            return View(viewModel);
+            return View(customers);
         }
 
         [Route("Customers/Details/{Id}")]
         public ActionResult Details(int Id)
         {
-            Customer customerFound = customers.Find(x => x.Id == Id);
-            if (customerFound != null)
+            var customer = _context.Customers.SingleOrDefault(x => x.Id == Id);
+            if (customer != null)
             {
-                return View(customerFound);
+                return View(customer);
             }
             else
             {
