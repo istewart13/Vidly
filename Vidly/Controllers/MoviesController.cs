@@ -35,11 +35,11 @@ namespace Vidly.Controllers
             return Content(year + "/" + month);
         }
 
-        [Route("movies"))]
+        [Route("movies")]
 
         public ActionResult Index()
         {
-
+            return View();
         }
     }
 }
