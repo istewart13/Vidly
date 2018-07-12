@@ -239,6 +239,10 @@
     <Compile Include="Migrations\201807121424066_AddBirthdateData.Designer.cs">
       <DependentUpon>201807121424066_AddBirthdateData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807121534304_FixBirthdateToUseDateTime.cs" />
+    <Compile Include="Migrations\201807121534304_FixBirthdateToUseDateTime.Designer.cs">
+      <DependentUpon>201807121534304_FixBirthdateToUseDateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -361,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807121424066_AddBirthdateData.resx">
       <DependentUpon>201807121424066_AddBirthdateData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807121534304_FixBirthdateToUseDateTime.resx">
+      <DependentUpon>201807121534304_FixBirthdateToUseDateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
